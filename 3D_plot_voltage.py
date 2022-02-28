@@ -49,7 +49,9 @@ print(X_unique)
 print(Y_unique)
 X, Y = np.meshgrid(X_unique, Y_unique)
 
-ax.contour3D(X, Y, Z)
+levels=np.array([1,2,3,4,5,6,7])
+
+cp = ax.contour3D(Y, X, Z, levels=levels)
 plt.title('Electric Potential Scalar Field')
 
 plt.show()
