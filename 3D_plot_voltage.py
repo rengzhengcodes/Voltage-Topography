@@ -28,7 +28,7 @@ df['Y']=df['Y'].cat.codes*2 +1
 # Make the plot
 fig = plt.figure()
 ax = fig.gca(projection='3d')
-ax.plot_trisurf(df['X'], df['Y'], df['Z'], cmap=plt.cm.viridis, linewidth=0.2)
+ax.plot_trisurf(df['X'], df['Y'], df['Z'], cmap=plt.cm.viridis)
 #ax.plot_trisurf(df['X'], df['Y'], df['Z'], cmap=plt.cm.coolwarm, linewidth=0.2)
 #ax.plot_trisurf(df['X'], df['Y'], df['Z'], cmap=plt.cm.inferno, linewidth=0.2)
 #ax.plot_trisurf(df['X'], df['Y'], df['Z'], cmap=plt.cm.RdBu, linewidth=0.2)
