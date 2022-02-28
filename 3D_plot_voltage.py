@@ -3,19 +3,19 @@ from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import pandas as pd
 
- 
+
 
 #I wound up not using these libraries, but you can do more cool stuff if you do
 import seaborn as sns
-import numpy as np 
- 
-# Get the data 
+import numpy as np
+
+# Get the data
 data = pd.read_csv('e_field.csv')
- 
+
 # Transform it to a long format
 df=data.unstack().reset_index()
 df.columns=["X","Y","Z"]
- 
+
 # Transform the spreadsheet rows and columns into centimeters
 df['X']=pd.Categorical(df['X'])
 
@@ -37,11 +37,14 @@ ax.set_xlabel('X coordinate (cm)')
 ax.set_ylabel('Y coordinate (cm)')
 ax.set_zlabel('Voltage (V)')
 
+# Contours, hopefully
+# source: https://python-course.eu/numerical-programming/contour-plots-with-matplotlib.php
+print(tuple(df["X"]), tuple(df["Y"])) ## gets coord grid
+"""
+cp = ax.contour(df['X'], df['Y'], df['Z'])
+ax.clabel(cp, inline=True, fontsize=10)
+
 plt.title('Electric Potential Scalar Field')
 
 plt.show()
- 
-
-
- 
-
+"""
