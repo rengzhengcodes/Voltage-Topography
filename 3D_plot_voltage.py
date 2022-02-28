@@ -39,7 +39,10 @@ ax.set_zlabel('Voltage (V)')
 
 # Contours, hopefully
 # source: https://python-course.eu/numerical-programming/contour-plots-with-matplotlib.php
-print(tuple(df["X"]), tuple(df["Y"])) ## gets coord grid
+X, Y = np.meshgrid(tuple(df["X"]), tuple(df["Y"])) ## gets coord grid
+
+Z = tuple(df["Z"])
+print(Z)
 """
 cp = ax.contour(df['X'], df['Y'], df['Z'])
 ax.clabel(cp, inline=True, fontsize=10)
