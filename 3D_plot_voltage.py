@@ -15,7 +15,7 @@ data = pd.read_csv('e_field.csv')
 # Transform it to a long format
 df=data.unstack().reset_index()
 df.columns=["X","Y","Z"]
-print(df)
+
 # Transform the spreadsheet rows and columns into centimeters
 df['X']=pd.Categorical(df['X'])
 
@@ -40,13 +40,16 @@ ax.set_zlabel('Voltage (V)')
 # Contours, hopefully
 # source: https://www.tutorialspoint.com/matplotlib/matplotlib_3d_contour_plot
 #https://discourse.matplotlib.org/t/plotting-a-contour-map-from-csv-file/9465/2
-X, Y = np.meshgrid(tuple(df["X"]), tuple(df["Y"]))
-Z = tuple(df["Z"])
-nlons = X.shape[1]
-nlats = X.shape[0]
-Z = np.reshape(Z, (nlats, nlons))
-ax.clabel(cp, inline=True, fontsize=10)
+# https://alex.miller.im/posts/contour-plots-in-python-matplotlib-x-y-z/
+Z = df.pivot_table(index="X", columns="Y", values="Z").T.values
 
+X_unique = np.sort(df.X.unique())
+Y_unique = np.sort(df.Y.unique())
+print(X_unique)
+print(Y_unique)
+X, Y = np.meshgrid(X_unique, Y_unique)
+
+ax.contour3D(X, Y, Z)
 plt.title('Electric Potential Scalar Field')
 
 plt.show()
