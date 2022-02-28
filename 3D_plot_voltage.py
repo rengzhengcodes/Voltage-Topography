@@ -51,12 +51,8 @@ levels=np.array([1,2,3,4,5,6,7])
 
 #colors
 import matplotlib.cm as cm
-cpf = ax.contour3D(X, Y, Z, len(levels), cmap = cm.Reds)
 
-#turns all black
-line_colors = ['black' for l in cpf.levels]
-
-cp = ax.contour3D(X, Y, Z, levels=levels, colors=line_colors)
+cp = ax.contour3D(X, Y, Z, levels=levels, cmap=cm.Reds, linewidths=10)
 plt.title('Electric Potential Scalar Field')
 
 plt.show()
