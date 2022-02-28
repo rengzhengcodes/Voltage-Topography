@@ -28,7 +28,7 @@ df['Y']=df['Y'].cat.codes*2 +1
 # Make the plot
 fig = plt.figure()
 ax = fig.gca(projection='3d')
-#ax.plot_trisurf(df['X'], df['Y'], df['Z'], cmap=plt.cm.viridis, linewidth=0.2)
+ax.plot_trisurf(df['X'], df['Y'], df['Z'], cmap=plt.cm.viridis, linewidth=0.2)
 #ax.plot_trisurf(df['X'], df['Y'], df['Z'], cmap=plt.cm.coolwarm, linewidth=0.2)
 #ax.plot_trisurf(df['X'], df['Y'], df['Z'], cmap=plt.cm.inferno, linewidth=0.2)
 #ax.plot_trisurf(df['X'], df['Y'], df['Z'], cmap=plt.cm.RdBu, linewidth=0.2)
@@ -52,7 +52,7 @@ levels=np.array([1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7])
 #colors
 import matplotlib.cm as cm
 
-cp = ax.contour3D(X, Y, Z, levels=levels, cmap=cm.cool)
+cp = ax.contour3D(X, Y, Z, levels=levels, cmap = cm.Greys)
 plt.title('Electric Potential Scalar Field')
 
 plt.show()
