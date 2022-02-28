@@ -45,13 +45,18 @@ Z = df.pivot_table(index="X", columns="Y", values="Z").T.values
 
 X_unique = np.sort(df.X.unique())
 Y_unique = np.sort(df.Y.unique())
-print(X_unique)
-print(Y_unique)
 X, Y = np.meshgrid(X_unique, Y_unique)
 
 levels=np.array([1,2,3,4,5,6,7])
 
-cp = ax.contour3D(Y, X, Z, levels=levels)
+#colors
+import matplotlib.cm as cm
+cpf = ax.contour3D(X, Y, Z, len(levels), cmap = cm.Reds)
+
+#turns all black
+line_colors = ['black' for l in cpf.levels]
+
+cp = ax.contour3D(X, Y, Z, levels=levels, colors=line_colors)
 plt.title('Electric Potential Scalar Field')
 
 plt.show()
